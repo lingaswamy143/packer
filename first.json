@@ -1,0 +1,29 @@
+{
+    "variables":{
+        "secret" :"",
+        "access" : "",
+        "region" : "us-west-2",
+        "ami_name": "apache-from-packer"
+    },
+    "builders": [
+        {
+           "type": "amazon-ebs",
+           "access_key": "{{user `access`}}",
+           "secret_key": "{{user `secret`}}", 
+           "region": "{{user `region`}}",
+            "source_ami": "ami-0e32ec5bc225539f5",
+            "instance_type": "t2.micro",
+            "ssh_username": "ubuntu",
+            "ami_name": "{{user `ami_name`}}"
+          }
+    ],
+    "provisioners":[
+        {
+            "type": "ansible",
+            "playbook_file": "./newtom.yml",
+            "inventory_file": "inventory/hosts",
+            "user": "ansible"
+             
+          }
+    ]
+}
