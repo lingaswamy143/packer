@@ -1,0 +1,12 @@
+server {
+    listen 80;
+    server_name ec2-34-215-31-71.us-west-2.compute.amazonaws.com;
+    location / {
+        proxy_pass http://172.31.16.254:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+     }
+}

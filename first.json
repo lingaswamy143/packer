@@ -21,8 +21,7 @@
         {
             "type": "ansible",
             "playbook_file": "./newtom.yml",
-            "inventory_file": "inventory/hosts",
-            "user": "ansible"
+            "user": "ubuntu"
              
           }
     ]
